@@ -25,27 +25,18 @@ function PostsNew() {
   )
 }
 
-function PostsIndex() {
+function PostsIndex(props) {
   return (
     <div id="posts-index">
-      <h1>All posts</h1>
-      <div className="posts">
-        <h2>Blog Post 1</h2>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet ducimus alias asperiores perspiciatis quidem? Repudiandae aspernatur itaque quas commodi blanditiis deserunt repellat minima natus autem animi?
-        </p>
-        <img src="https://plus.unsplash.com/premium_photo-1677343210638-5d3ce6ddbf85?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dHJhdmVsfGVufDB8fDB8fHww" />
-        <h2>Blog Post 2</h2>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat recusandae error beatae aperiam quis veniam voluptas, laudantium harum numquam magni, magnam eum illo cumque voluptatum repellat rerum!
-        </p>
-        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dHJhdmVsfGVufDB8fDB8fHww" />
-        <h2>Blog Post 3</h2>
-        <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste, expedita vel omnis inventore saepe eius! Fuga aut illum atque placeat, dolorem sapiente maxime quae rem eius qui deleniti quo consequatur!
-        </p>
-        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D" />
-      </div>
+      <h1>All {props.postsProp.length} Posts</h1>
+      {props.postsProp.map((post) => (
+        <div key={post.id} className="posts">
+          <h2>{post.title}</h2>
+          <p>{post.body}</p>
+          <img src={post.image_url} />
+          <button>More Info</button>
+        </div>
+      ))}
     </div>
   )
 }
@@ -59,10 +50,31 @@ function Footer() {
 }
 
 function PostsPage() {
+  let posts = [
+    {
+      id: 1,
+      title: "Blog Post 1",
+      body: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet ducimus alias asperiores perspiciatis quidem? Repudiandae aspernatur itaque quas commodi blanditiis deserunt repellat minima natus autem animi?",
+      image_url: "https://plus.unsplash.com/premium_photo-1677343210638-5d3ce6ddbf85?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dHJhdmVsfGVufDB8fDB8fHww"
+    },
+    {
+      id: 2,
+      title: "Blog Post 2",
+      body: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat recusandae error beatae aperiam quis veniam voluptas, laudantium harum numquam magni, magnam eum illo cumque voluptatum repellat rerum!",
+      image_url: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dHJhdmVsfGVufDB8fDB8fHww"
+    },
+    {
+      id: 3,
+      title: "Blog Post 3",
+      body: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste, expedita vel omnis inventore saepe eius! Fuga aut illum atque placeat, dolorem sapiente maxime quae rem eius qui deleniti quo consequatur!",
+      image_url: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D"
+    }
+  ];
+
   return (
     <div>
     <PostsNew />
-    <PostsIndex />
+    <PostsIndex postsProp={posts} />
     </div>
   )
 }
