@@ -1,7 +1,7 @@
 import { PostsIndex } from "./PostsIndex";
 import { PostsNew } from "./PostsNew";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function PostsPage() {
 
@@ -22,10 +22,11 @@ export function PostsPage() {
     })
   }
 
+  useEffect(handleIndex, []);
+
   return (
     <div>
       <PostsNew />
-      <button onClick={handleIndex}>Load Posts</button>
       <PostsIndex postsProp={posts} />
     </div>
   );
