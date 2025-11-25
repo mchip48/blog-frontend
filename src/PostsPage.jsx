@@ -25,15 +25,24 @@ export function PostsPage() {
 
   const handleShow = (post) => {
     console.log("handleShow", post)
+    setIsPostsShowVisible(true);
+    setCurrentPost(post);
   }
+
+  const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
+  const [currentPost, setCurrentPost] = useState({});
+
+
   useEffect(handleIndex, []);
 
   return (
     <div>
       <PostsNew />
       <PostsIndex postsProp={posts} onShow={handleShow}/>
-      <Modal show={true}>
-        <p>TEST</p>
+      <Modal show={isPostsShowVisible} onClose={() => setIsPostsShowVisible(false)}>
+        <h2>Title: {currentPost.title}</h2>
+        <img src={currentPost.image}></img>
+        <p>Description: {currentPost.body}</p>
       </Modal>
     </div>
   );
