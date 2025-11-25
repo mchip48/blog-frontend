@@ -22,12 +22,15 @@ export function PostsPage() {
     })
   }
 
+  const handleShow = (post) => {
+    console.log("handleShow", post)
+  }
   useEffect(handleIndex, []);
 
   return (
     <div>
       <PostsNew />
-      <PostsIndex postsProp={posts} />
+      <PostsIndex postsProp={posts} onShow={handleShow}/>
     </div>
   );
 }
