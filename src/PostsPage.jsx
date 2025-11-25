@@ -34,6 +34,7 @@ export function PostsPage() {
     console.log("handleCreate");
     axios.post("http://localhost:3000/posts.json", params).then((response) => {
       console.log(response.data);
+      setPosts([...posts, response.data]);
     })
   }
 
