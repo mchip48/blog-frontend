@@ -2,6 +2,7 @@ import { PostsIndex } from "./PostsIndex";
 import { PostsNew } from "./PostsNew";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Modal } from "./Modal";
 
 export function PostsPage() {
 
@@ -31,6 +32,9 @@ export function PostsPage() {
     <div>
       <PostsNew />
       <PostsIndex postsProp={posts} onShow={handleShow}/>
+      <Modal show={true}>
+        <p>TEST</p>
+      </Modal>
     </div>
   );
 }
