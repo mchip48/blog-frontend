@@ -34,9 +34,18 @@ export function PostsPage() {
     console.log("handleCreate");
     axios.post("http://localhost:3000/posts.json", params).then((response) => {
       console.log(response.data);
+      // spread operator
       setPosts([...posts, response.data]);
     })
   }
+
+  const handleUpdate = (post, params) => {
+    console.log("handleUpdate");
+    axios.patch("http://localhost:3000/posts/" + post.id + ".json", params).then((response) => {
+      setPosts(posts.map(p => p.id === response.data.id ? response.data : p));
+      setIsPostsShowVisible(false);
+    });
+  };
 
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
   const [currentPost, setCurrentPost] = useState({});
@@ -49,7 +58,7 @@ export function PostsPage() {
       <PostsNew onCreate={handleCreate} />
       <PostsIndex postsProp={posts} onShow={handleShow}/>
       <Modal show={isPostsShowVisible} onClose={() => setIsPostsShowVisible(false)}>
-        <PostsShow post={currentPost} />
+        <PostsShow post={currentPost} onUpdate={handleUpdate} />
       </Modal>
     </div>
   );

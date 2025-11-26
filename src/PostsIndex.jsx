@@ -5,8 +5,8 @@ export function PostsIndex(props) {
       {props.postsProp.map((post) => (
         <div key={post.id} className="posts">
           <h2>{post.title}</h2>
-          <p>{post.body}</p>
           <img src={post.image} />
+          <p>{post.body}</p>
           <div>
             
           </div>
