@@ -47,6 +47,15 @@ export function PostsPage() {
     });
   };
 
+  const handleDestroy = (post) => {
+    console.log("handleDestroy", post)
+    axios.delete(`http://localhost:3000/posts/${post.id}.json`).then((response) => {
+      console.log(response.data);
+      setPosts(posts.filter(p => p.id !== post.id));
+      setIsPostsShowVisible(false);
+    });
+  };
+
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
   const [currentPost, setCurrentPost] = useState({});
 
@@ -58,7 +67,7 @@ export function PostsPage() {
       <PostsNew onCreate={handleCreate} />
       <PostsIndex postsProp={posts} onShow={handleShow}/>
       <Modal show={isPostsShowVisible} onClose={() => setIsPostsShowVisible(false)}>
-        <PostsShow post={currentPost} onUpdate={handleUpdate} />
+        <PostsShow post={currentPost} onUpdate={handleUpdate} onDestroy={handleDestroy}/>
       </Modal>
     </div>
   );
