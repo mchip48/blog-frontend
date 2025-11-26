@@ -1,31 +1,32 @@
-export function PostsShow(props) {
-  const handleSubmit = event => {
+export function PostsShow( { onUpdate, post, onDestroy } ) {
+  
+  const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    props.onUpdate(props.post, params);
+    onUpdate(post, params);
     event.target.reset();
   };
 
   return (
     <div id="posts-show">
-      <h2>Title: {props.post.title}</h2>
-      <img src={props.post.image}></img>
-      <p>Description: {props.post.body}</p>
+      <h2>Title: {post.title}</h2>
+      <img src={post.image}></img>
+      <p>Description: {post.body}</p>
       <hr />
       <h2>Edit Post</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          Title: <input name="title" defaultValue={props.post.title} type="text" />
+          Title: <input name="title" defaultValue={post.title} type="text" />
         </div>
         <div>
-          Image URL: <input name="image" defaultValue={props.post.image} type="text" />
+          Image URL: <input name="image" defaultValue={post.image} type="text" />
         </div>
         <div>
-          Description: <input name="body" defaultValue={props.post.body} type="text" />
+          Description: <input name="body" defaultValue={post.body} type="text" />
         </div>
         <button type="submit">Update Post</button>
       </form>
-      <button onClick={() => props.onDestroy(props.post)}>Delete Recipe</button>
+      <button onClick={() => onDestroy(post)}>Delete Recipe</button>
     </div>
   )
 }

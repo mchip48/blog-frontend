@@ -18,50 +18,43 @@ export function PostsPage() {
   // function to update the state variable - setRecipes
 
   const handleIndex = () => {
-    axios.get("http://localhost:3000/posts.json").then((response) => {
-      console.log(response.data);
+    axios.get("/posts.json").then((response) => {
       setPosts(response.data);
     })
   }
-
+  
   const handleShow = (post) => {
-    console.log("handleShow", post)
     setIsPostsShowVisible(true);
     setCurrentPost(post);
   }
-
+  
   const handleCreate = (params) => {
-    console.log("handleCreate");
-    axios.post("http://localhost:3000/posts.json", params).then((response) => {
-      console.log(response.data);
+    axios.post("/posts.json", params).then((response) => {
       // spread operator
       setPosts([...posts, response.data]);
     })
   }
-
+  
   const handleUpdate = (post, params) => {
-    console.log("handleUpdate");
-    axios.patch("http://localhost:3000/posts/" + post.id + ".json", params).then((response) => {
+    axios.patch("/posts/" + post.id + ".json", params).then((response) => {
       setPosts(posts.map(p => p.id === response.data.id ? response.data : p));
       setIsPostsShowVisible(false);
     });
   };
-
+  
   const handleDestroy = (post) => {
-    console.log("handleDestroy", post)
-    axios.delete(`http://localhost:3000/posts/${post.id}.json`).then((response) => {
-      console.log(response.data);
+    axios.delete(`/posts/${post.id}.json`).then((response) => {
       setPosts(posts.filter(p => p.id !== post.id));
       setIsPostsShowVisible(false);
     });
   };
-
+  
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
   const [currentPost, setCurrentPost] = useState({});
-
-
+  
+  
   useEffect(handleIndex, []);
-
+  
   return (
     <div>
       <PostsNew onCreate={handleCreate} />
@@ -72,3 +65,12 @@ export function PostsPage() {
     </div>
   );
 }
+
+// Line 22: console.log(response.data);
+// Line 27: console.log("handleShow", post)
+// Line 32: console.log("handleCreate");
+// Line 33: console.log(response.data);
+// Line 34: spread operator
+// Line 38: console.log("handleUpdate");
+// Line 45: console.log("handleDestroy", post)
+// Line 46: console.log(response.data);
