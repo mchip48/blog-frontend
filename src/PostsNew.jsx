@@ -14,16 +14,16 @@ export function PostsNew( { onCreate } ) {
     <div id="posts-new">
       <h1>New post</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          Title: <input name ="title" type="text" />
+        <div className="mb-3">
+          Title: <input className="form-control" name="title" type="text" />
         </div>
-        <div>
-          Body: <input name ="body" type="text" />
+        <div className="mb-3">
+          Body: <input className="form-control" name="body" type="text" />
         </div>
-        <div>
-          Image: <input name = "image" type="text" />
+        <div className="mb-3">
+          Image: <input className="form-control" name="image" type="text" />
         </div>
-        <button type="submit">Create Post</button>
+        <button className="btn btn-success" type="submit">Create Post</button>
       </form>
     </div>
   );

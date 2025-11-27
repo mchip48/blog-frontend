@@ -9,7 +9,7 @@ axios.defaults.withCredentials = true;
 function App() {
 
   return (
-    <div>
+    <div className="container">
       <Header />
       <PostsPage />
       <Footer />
