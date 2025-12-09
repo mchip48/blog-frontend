@@ -1,6 +1,7 @@
 import { LogoutLink } from "./LogoutLink";
 
 export function Header() {
+  const email = localStorage.getItem("email");
   return (
     <header>
 
@@ -21,9 +22,21 @@ export function Header() {
             <li className="nav-item">
               <a className="nav-link" href="#posts-new">New Post</a>
             </li>
+            {email ? (
+              <>
+              <span> | Logged in as {email} |</span>
             <li className="nav-item">
-              <a className="nav-link" href="#"><LogoutLink /></a>
+              <a className="nav-link" href="#"></a> | <LogoutLink />
             </li>
+              </>
+            ) : (
+              <>
+              <span> | </span>
+              <a href="#signup">Signup</a>
+              <span> | </span>
+              <a href="#login">Login</a>
+              </>
+            )}
           </ul>
         </div>
       </div>
