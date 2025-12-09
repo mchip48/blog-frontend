@@ -1,3 +1,5 @@
+import { LogoutLink } from "./LogoutLink";
+
 export function Header() {
   return (
     <header>
@@ -18,6 +20,9 @@ export function Header() {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#posts-new">New Post</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#"><LogoutLink /></a>
             </li>
           </ul>
         </div>
