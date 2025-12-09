@@ -10,7 +10,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* #root {
+#root {
   font-family: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
   font-weight: normal;
-} */
+}
