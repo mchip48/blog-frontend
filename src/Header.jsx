@@ -18,10 +18,10 @@ export function Header() {
               <Link className="nav-link active" aria-current="page" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#posts-index">All Posts</a>
+              <Link className="nav-link" to="/posts">All Posts</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#posts-new">New Post</a>
+              <Link className="nav-link" to="/posts/new">New Post</Link>
             </li>
             {email ? (
               <>
