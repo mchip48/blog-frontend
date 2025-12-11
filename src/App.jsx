@@ -6,6 +6,7 @@ import { Header } from "./Header";
 import { HomePage } from "./HomePage";
 import { PostsIndexPage } from "./PostsIndexPage";
 import { PostsNewPage } from "./PostsNewPage";
+import { PostsShowPage } from "./PostsShowPage";
 import { SignupPage } from "./SignupPage";
 import { LoginPage } from "./LoginPage";
 import { Footer } from "./Footer";
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/posts/new",
         element: <PostsNewPage />
+      },
+      {
+        path: "/posts/:id",
+        element: <PostsShowPage />
       },
       {
         path: "/signup",
