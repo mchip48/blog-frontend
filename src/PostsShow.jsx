@@ -24,6 +24,19 @@ export function PostsShow( { onUpdate, post, onDestroy } ) {
         <div>
           Description: <input name="body" defaultValue={post.body} type="text" />
         </div>
+        <div>
+          <strong>Tags: </strong>
+          {post.tags && post.tags.length > 0 ? (
+            post.tags.map((tag) => (
+              <span key={tag.id} className="badge-info me-1">
+                {tag.name}
+              </span>
+            ))
+          ) : (
+            <span className="text-muted">No Tags</span>
+          )}
+        </div>
+        
         <button type="submit">Update Post</button>
       </form>
       <button onClick={() => onDestroy(post)}>Delete Recipe</button>
