@@ -54,7 +54,7 @@ export function PostsIndexPage() {
               {tag.name}
             </option>
           ))}
-        </select>r
+        </select>
     </div>
       <PostsIndex postsProp={posts} onShow={handleShow} />
     </div>
