@@ -48,7 +48,7 @@ export function PostsIndexPage() {
           value={selectedTag}
           onChange={handleFilterChange}
         >
-          <option value="">All Recipes</option>
+          <option value="">All Posts</option>
           {allTags.map((tag) => (
             <option key={tag.id} value={tag.name}>
               {tag.name}

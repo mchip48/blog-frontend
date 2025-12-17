@@ -14,7 +14,6 @@ export function PostsNewPage() {
 
   return (
     <div>
-      <h1>New Posts</h1>
       <PostsNew onCreate={handleCreate} />
     </div>
   );
