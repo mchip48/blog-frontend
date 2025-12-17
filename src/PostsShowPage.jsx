@@ -9,7 +9,7 @@ export function PostsShowPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`posts/${id}.json`).then((response) => {
+    axios.get(`/posts/${id}.json`).then((response) => {
       setPost(response.data);
     });
   }, [id]);
