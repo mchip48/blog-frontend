@@ -12,11 +12,12 @@ import { LoginPage } from "./LoginPage";
 import { Footer } from "./Footer";
 
 // axios.defaults.baseURL = "http://localhost:3000";
-// axios.defaults.withCredentials = true;
 
 axios.defaults.baseURL = process.env.NODE_ENV === "development" 
-  ? "http://localhost:3000" 
-  : "https://blog-backend-ie3u.onrender.com";  // Replace with YOUR Render URL
+? "http://localhost:3000" 
+: "https://blog-backend-ie3u.onrender.com";  // Replace with YOUR Render URL
+
+axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
   {
